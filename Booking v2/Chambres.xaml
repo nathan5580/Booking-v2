@@ -1,0 +1,73 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Booking_v2"
+      xmlns:Model="clr-namespace:Booking_v2.Model" x:Class="Booking_v2.Chambres"
+      mc:Ignorable="d"
+      Title="Chambres" Height="368" Width="652">
+
+    <Page.Resources>
+
+        <CollectionViewSource x:Key="hotelsSetViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:HotelsSet}, CreateList=True}"/>
+        <CollectionViewSource x:Key="chambresSetViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:ChambresSet}, CreateList=True}"/>
+    </Page.Resources>
+
+    <Grid>
+
+        <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
+            <DataGrid x:Name="chambresSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource chambresSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn x:Name="climatisationColumn" Binding="{Binding Climatisation}" Header="Climatisation" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="hotelsSetIdColumn" Binding="{Binding HotelsSetId}" Header="Hotels Set Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="nbLitsColumn" Binding="{Binding NbLits}" Header="Nb Lits" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="nomColumn" Binding="{Binding Nom}" Header="Nom" Width="SizeToHeader"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Label VerticalAlignment="Top" Style="{DynamicResource SimpleLabel}" Height="25.962" HorizontalAlignment="Center" FontSize="20" DockPanel.Dock="Top" Content="Chambres" Background="{x:Null}"/>
+            <StackPanel VerticalAlignment="Top" Margin="0,0,10,0" Height="338.836" DockPanel.Dock="Top">
+                <Grid x:Name="grid1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Grid x:Name="grid2" DataContext="{StaticResource chambresSetViewSource}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Climatisation:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="climatisationCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Climatisation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                    <Label Content="Hotels Set Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                    <ComboBox Name="comboHotelID" Style="{DynamicResource SimpleComboBox}" HorizontalAlignment="Left" Height="23" Margin="3,3,0,6" Grid.Row="1" VerticalAlignment="Center" Width="120" Grid.Column="1"/>
+                    <!--<TextBox x:Name="hotelsSetIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding HotelsSetId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>-->
+                    <Label Content="Nb Lits:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                    <TextBox x:Name="nbLitsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding NbLits, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    <Label Content="Nom:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                    <TextBox x:Name="nomTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding Nom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                </Grid>
+
+                <Button x:Name="validateChambre" Width="122.18" Style="{DynamicResource SimpleButton}" HorizontalAlignment="Center" Content="Valider" Background="{x:Null}" VerticalAlignment="Top" Click="validateChambre_Click"/>
+            </StackPanel>
+        </DockPanel>
+
+    </Grid>
+</Page>

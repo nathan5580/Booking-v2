@@ -1,0 +1,85 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Booking_v2"
+      xmlns:Model="clr-namespace:Booking_v2.Model" x:Class="Booking_v2.Reservations"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Reservations" Width="652" Height="368">
+
+    <Page.Resources>
+
+        <CollectionViewSource x:Key="hotelsSetViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:HotelsSet}, CreateList=True}"/>
+        <CollectionViewSource x:Key="reservationSetViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:ReservationSet}, CreateList=True}"/>
+    </Page.Resources>
+
+    <Grid>
+
+        <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
+            <DataGrid x:Name="reservationSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource reservationSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398" Margin="0,0,0,3">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="chambresSetIdColumn" Binding="{Binding ChambresSetId}" Header="Chambres Set Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="clientsSetIdColumn" Binding="{Binding ClientsSetId}" Header="Clients Set Id" Width="SizeToHeader"/>
+                    <DataGridTemplateColumn x:Name="dateDebutColumn" Header="date Debut" Width="SizeToHeader">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding dateDebut, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn x:Name="dateFinColumn" Header="date Fin" Width="SizeToHeader">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker SelectedDate="{Binding dateFin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Label VerticalAlignment="Top" Style="{DynamicResource SimpleLabel}" Height="25.962" HorizontalAlignment="Center" FontSize="20" DockPanel.Dock="Top" Content="Reservations" Background="{x:Null}"/>
+            <StackPanel VerticalAlignment="Top" Margin="0,0,10,0" Height="338.836" DockPanel.Dock="Top">
+                <Grid x:Name="grid1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Grid x:Name="grid2" DataContext="{StaticResource reservationSetViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Chambres Set Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                    <Label Content="Clients Set Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                    <Label Content="date Debut:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="dateDebutDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="2" SelectedDate="{Binding dateDebut, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                    <Label Content="date Fin:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="dateFinDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding dateFin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                </Grid>
+
+                <Button x:Name="validateReservation" Width="122.18" VerticalAlignment="Top" Style="{DynamicResource SimpleButton}" HorizontalAlignment="Center" Content="Valider" Click="validateReservation_Click"/>
+            </StackPanel>
+        </DockPanel>
+        <ComboBox x:Name="comboChambre" Style="{DynamicResource SimpleComboBox}" HorizontalAlignment="Left" Height="23" Margin="505,34,0,311" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="comboClient" Style="{DynamicResource SimpleComboBox}" HorizontalAlignment="Left" Height="23" Margin="505,62,0,283" VerticalAlignment="Center" Width="120" RenderTransformOrigin="0.133,-5"/>
+
+    </Grid>
+</Page>
