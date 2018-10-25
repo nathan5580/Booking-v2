@@ -24,9 +24,23 @@ namespace Booking_v2
         public Hotels()
         {
             InitializeComponent();
-            DisplayHotels();
+            try
+            {
+                DisplayHotels();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
+        /// <summary>
+        /// refresh datagrid
+        /// </summary>
+        /// =====================================================================================
+        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
         private void DisplayHotels()
         {
             try
@@ -43,6 +57,15 @@ namespace Booking_v2
             }
         }
 
+        /// <summary>
+        /// add new record
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
         private void validateHotel_Click(object sender, RoutedEventArgs e)
         {
             try

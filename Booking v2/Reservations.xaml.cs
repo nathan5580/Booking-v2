@@ -57,6 +57,13 @@ namespace Booking_v2
             }
         }
 
+        /// <summary>
+        /// refresh datagrid
+        /// </summary>
+        /// =====================================================================================
+        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
         private void DisplayReservations()
         {
             using (var db = new Model.Booking())
@@ -66,6 +73,15 @@ namespace Booking_v2
             }
         }
 
+        /// <summary>
+        /// add new record
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
         private void validateReservation_Click(object sender, RoutedEventArgs e)
         {
             try
