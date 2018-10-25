@@ -52,7 +52,7 @@
                         <MenuItem
                             Header="Update" Background="{x:Null}"/>
                         <MenuItem
-                            Header="Delete"/>
+                            Header="Delete" Click="MenuItem_Click"/>
                     </ContextMenu>
                 </DataGrid.ContextMenu>
             </DataGrid>

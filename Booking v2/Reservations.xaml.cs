@@ -24,28 +24,35 @@ namespace Booking_v2
         public Reservations()
         {
             InitializeComponent();
-            DisplayReservations();
-
-            using (var db = new Model.Booking())
+            try
             {
-                List<int> chambreID = (from chambre in db.ChambresSet select chambre.Id).ToList();
+                DisplayReservations();
 
-
-                foreach (var item in chambreID)
+                using (var db = new Model.Booking())
                 {
-                    comboChambre.Items.Add(item.ToString());
+                    List<int> chambreID = (from chambre in db.ChambresSet select chambre.Id).ToList();
+
+
+                    foreach (var item in chambreID)
+                    {
+                        comboChambre.Items.Add(item.ToString());
+                    }
+                }
+
+                using (var db = new Model.Booking())
+                {
+                    List<int> clients = (from cli in db.ClientsSet select cli.Id).ToList();
+
+
+                    foreach (var item in clients)
+                    {
+                        comboClient.Items.Add(item.ToString());
+                    }
                 }
             }
-
-            using (var db = new Model.Booking())
+            catch (Exception ex)
             {
-                List<int> clients = (from cli in db.ClientsSet select cli.Id).ToList();
-
-
-                foreach (var item in clients)
-                {
-                    comboClient.Items.Add(item.ToString());
-                }
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -71,6 +78,37 @@ namespace Booking_v2
                     reserv.dateFin = dateFinDatePicker.DisplayDate.Date;
 
                     db.ReservationSet.Add(reserv);
+                    db.SaveChanges();
+                }
+
+                DisplayReservations();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        /// <summary>
+        /// Delete
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ReservationSet row = (ReservationSet)reservationSetDataGrid.SelectedItems[0];
+
+                using (var db = new Model.Booking())
+                {
+                    var reservation = new ReservationSet() { Id = row.Id };
+                    db.ReservationSet.Attach(reservation);
+                    db.ReservationSet.Remove(reservation);
                     db.SaveChanges();
                 }
 

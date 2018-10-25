@@ -24,7 +24,14 @@ namespace Booking_v2
         public Clients()
         {
             InitializeComponent();
-            DisplayClients();
+            try
+            {
+                DisplayClients();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void DisplayClients()
@@ -38,18 +45,56 @@ namespace Booking_v2
 
         private void validateClient_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new Model.Booking())
+            try
             {
-                ClientsSet client = new ClientsSet();
-                client.Nom = nomTextBox.Text;
-                client.Prenom = prenomTextBox.Text;
-                client.DateNaissance = dateNaissanceDatePicker.DisplayDate;
+                using (var db = new Model.Booking())
+                {
+                    ClientsSet client = new ClientsSet();
+                    client.Nom = nomTextBox.Text;
+                    client.Prenom = prenomTextBox.Text;
+                    client.DateNaissance = dateNaissanceDatePicker.DisplayDate;
 
-                db.ClientsSet.Add(client);
-                db.SaveChanges();
+                    db.ClientsSet.Add(client);
+                    db.SaveChanges();
+                }
+
+                DisplayClients();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
 
-            DisplayClients();
+        /// <summary>
+        /// delete
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ClientsSet row = (ClientsSet)clientsSetDataGrid.SelectedItems[0];
+
+                using (var db = new Model.Booking())
+                {
+                    var client = new ClientsSet() { Id = row.Id };
+                    db.ClientsSet.Attach(client);
+                    db.ClientsSet.Remove(client);
+                    db.SaveChanges();
+                }
+
+                DisplayClients();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
