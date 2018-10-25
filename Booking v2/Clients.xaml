@@ -19,6 +19,15 @@
 
         <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
             <DataGrid x:Name="clientsSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource clientsSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="391" Height="368">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTemplateColumn x:Name="dateNaissanceColumn" Header="Date Naissance" Width="SizeToHeader">
                         <DataGridTemplateColumn.CellTemplate>
@@ -31,6 +40,14 @@
                     <DataGridTextColumn x:Name="nomColumn" Binding="{Binding Nom}" Header="Nom" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="prenomColumn" Binding="{Binding Prenom}" Header="Prenom" Width="SizeToHeader"/>
                 </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem
+                            Header="Update" Background="{x:Null}"/>
+                        <MenuItem
+                            Header="Delete"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
             </DataGrid>
 
             <Label VerticalAlignment="Top" Style="{DynamicResource SimpleLabel}" Height="25.962" HorizontalAlignment="Center" FontSize="20" DockPanel.Dock="Top" Content="Clients" Background="{x:Null}"/>

@@ -15,6 +15,15 @@
     <Grid>
         <DockPanel HorizontalAlignment="Left" Height="368" LastChildFill="False" VerticalAlignment="Top" Width="652" Background="White" DataContext="{StaticResource hotelsSetViewSource}">
             <DataGrid x:Name="hotelsSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Width="391.971" Background="{x:Null}">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="capaciteColumn" Binding="{Binding Capacite}" Header="Capacite" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
@@ -22,6 +31,14 @@
                     <DataGridTextColumn x:Name="nomColumn" Binding="{Binding Nom}" Header="Nom" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="paysColumn" Binding="{Binding Pays}" Header="Pays" Width="SizeToHeader"/>
                 </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem
+                            Header="Update" Background="{x:Null}"/>
+                        <MenuItem
+                            Header="Delete"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
             </DataGrid>
             <Label Content="Hotels" Height="25.962" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Background="{x:Null}" DockPanel.Dock="Top" HorizontalAlignment="Center" FontSize="20"/>
             <StackPanel Height="338.836" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,10,0">

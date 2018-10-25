@@ -19,6 +19,15 @@
 
         <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
             <DataGrid x:Name="reservationSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource reservationSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398" Margin="0,0,0,3">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="chambresSetIdColumn" Binding="{Binding ChambresSetId}" Header="Chambres Set Id" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="clientsSetIdColumn" Binding="{Binding ClientsSetId}" Header="Clients Set Id" Width="SizeToHeader"/>
@@ -38,6 +47,14 @@
                     </DataGridTemplateColumn>
                     <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
                 </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem
+                            Header="Update" Background="{x:Null}"/>
+                        <MenuItem
+                            Header="Delete"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
             </DataGrid>
 
             <Label VerticalAlignment="Top" Style="{DynamicResource SimpleLabel}" Height="25.962" HorizontalAlignment="Center" FontSize="20" DockPanel.Dock="Top" Content="Reservations" Background="{x:Null}"/>

@@ -73,5 +73,10 @@ namespace Booking_v2
 
             DisplayChambres();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
