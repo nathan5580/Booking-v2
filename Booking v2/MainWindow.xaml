@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Booking_v2"
         mc:Ignorable="d"
-        Title="Booking C-V2" Height="450" Width="800">
+        Title="Booking C-V2" Height="440" Width="800" MaxHeight="440" MaxWidth="800" MinHeight="440" MinWidth="800">
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="419" Style="{DynamicResource SimpleTabControl}" VerticalAlignment="Top" Width="792" Background="White">
             <TabItem Header="Accueil" Style="{DynamicResource SimpleTabItem}" Background="White">
