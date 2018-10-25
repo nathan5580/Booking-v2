@@ -76,6 +76,7 @@
     <Compile Include="Chambres.xaml.cs">
       <DependentUpon>Chambres.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Util.cs" />
     <Compile Include="Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>

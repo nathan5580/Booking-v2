@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Booking_v2.Classes;
 using Booking_v2.Model;
 
 namespace Booking_v2
@@ -26,19 +27,26 @@ namespace Booking_v2
         {
             InitializeComponent();
 
-            //Task task = new Task(async () => await DisplayChambres());
-            //task.Start();
-            DisplayChambres();
-
-            using (var db = new Model.Booking())
+            try
             {
-                List<int> hotelIds = (from hotel in db.HotelsSet select hotel.Id).ToList();
+                //Task task = new Task(async () => await DisplayChambres());
+                //task.Start();
+                DisplayChambres();
 
-
-                foreach (var item in hotelIds)
+                using (var db = new Model.Booking())
                 {
-                    comboHotelID.Items.Add(item.ToString());
+                    List<HotelsSet> hotelIds = (from hotel in db.HotelsSet select hotel).ToList();
+
+
+                    foreach (var item in hotelIds)
+                    {
+                        comboHotelID.Items.Add(item.Id + "-" + item.Nom);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -54,25 +62,34 @@ namespace Booking_v2
 
         private void validateChambre_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new Model.Booking(){ Configuration = { ProxyCreationEnabled = false } })
+            try
             {
-                bool isClim = false;
-                if (climatisationCheckBox.IsChecked.Value)
+                using (var db = new Model.Booking() { Configuration = { ProxyCreationEnabled = false } })
                 {
-                    isClim = true;
+                    int id = Util.GetComboId(comboHotelID.Text);
+
+                    bool isClim = false;
+                    if (climatisationCheckBox.IsChecked.Value)
+                    {
+                        isClim = true;
+                    }
+
+                    ChambresSet chambre = new ChambresSet();
+                    chambre.Nom = nomTextBox.Text;
+                    chambre.Climatisation = isClim;
+                    chambre.NbLits = Int32.Parse(nbLitsTextBox.Text);
+                    chambre.HotelsSetId = id;
+
+                    db.ChambresSet.Add(chambre);
+                    db.SaveChanges();
                 }
 
-                ChambresSet chambre = new ChambresSet();
-                chambre.Nom = nomTextBox.Text;
-                chambre.Climatisation = isClim;
-                chambre.NbLits = Int32.Parse(nbLitsTextBox.Text);
-                chambre.HotelsSetId = comboHotelID.SelectedIndex;
-
-                db.ChambresSet.Add(chambre);
-                db.SaveChanges();
+                DisplayChambres();
             }
-
-            DisplayChambres();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         /// <summary>
@@ -86,21 +103,28 @@ namespace Booking_v2
         /// =====================================================================================
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            ChambresSet row = (ChambresSet)chambresSetDataGrid.SelectedItems[0];
-
-            using (var db = new Model.Booking())
+            try
             {
-                ChambresSet chambre = db.ChambresSet.SingleOrDefault(c => c.Id == row.Id);
-                if (chambre != null)
-                {
-                    chambre.Climatisation = row.Climatisation;
-                    chambre.NbLits = row.NbLits;
-                    chambre.Nom = row.Nom;
-                    db.SaveChanges();
-                }
-            }
+                ChambresSet row = (ChambresSet)chambresSetDataGrid.SelectedItems[0];
 
-            DisplayChambres();
+                using (var db = new Model.Booking())
+                {
+                    ChambresSet chambre = db.ChambresSet.SingleOrDefault(c => c.Id == row.Id);
+                    if (chambre != null)
+                    {
+                        chambre.Climatisation = row.Climatisation;
+                        chambre.NbLits = row.NbLits;
+                        chambre.Nom = row.Nom;
+                        db.SaveChanges();
+                    }
+                }
+
+                DisplayChambres();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         /// <summary>
@@ -114,17 +138,24 @@ namespace Booking_v2
         /// =====================================================================================
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            ChambresSet row = (ChambresSet)chambresSetDataGrid.SelectedItems[0];
-
-            using (var db = new Model.Booking())
+            try
             {
-                var chambre = new ChambresSet() { Id = row.Id };
-                db.ChambresSet.Attach(chambre);
-                db.ChambresSet.Remove(chambre);
-                db.SaveChanges();
-            }
+                ChambresSet row = (ChambresSet)chambresSetDataGrid.SelectedItems[0];
 
-            DisplayChambres();
+                using (var db = new Model.Booking())
+                {
+                    var chambre = new ChambresSet() { Id = row.Id };
+                    db.ChambresSet.Attach(chambre);
+                    db.ChambresSet.Remove(chambre);
+                    db.SaveChanges();
+                }
+
+                DisplayChambres();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Booking_v2.Classes;
 using Booking_v2.Model;
 
 namespace Booking_v2
@@ -30,23 +31,23 @@ namespace Booking_v2
 
                 using (var db = new Model.Booking())
                 {
-                    List<int> chambreID = (from chambre in db.ChambresSet select chambre.Id).ToList();
+                    List<ChambresSet> chambreID = (from chambre in db.ChambresSet select chambre).ToList();
 
 
                     foreach (var item in chambreID)
                     {
-                        comboChambre.Items.Add(item.ToString());
+                        comboChambre.Items.Add(item.Id + "-" + item.Nom);
                     }
                 }
 
                 using (var db = new Model.Booking())
                 {
-                    List<int> clients = (from cli in db.ClientsSet select cli.Id).ToList();
+                    List<ClientsSet> clients = (from cli in db.ClientsSet select cli).ToList();
 
 
                     foreach (var item in clients)
                     {
-                        comboClient.Items.Add(item.ToString());
+                        comboClient.Items.Add(item.Id + "-" + item.Nom + "." + item.Prenom);
                     }
                 }
             }
@@ -69,11 +70,14 @@ namespace Booking_v2
         {
             try
             {
+                int idChambre = Util.GetComboId(comboChambre.Text);
+                int idClient = Util.GetComboId(comboClient.Text);
+
                 using (var db = new Model.Booking())
                 {
                     ReservationSet reserv = new ReservationSet();
-                    reserv.ChambresSetId = comboChambre.SelectedIndex;
-                    reserv.ClientsSetId = comboClient.SelectedIndex;
+                    reserv.ChambresSetId = idChambre;
+                    reserv.ClientsSetId = idClient;
                     reserv.dateDebut = dateDebutDatePicker.DisplayDate.Date;
                     reserv.dateFin = dateFinDatePicker.DisplayDate.Date;
 
