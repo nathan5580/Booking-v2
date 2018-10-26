@@ -57,6 +57,15 @@ namespace Booking_v2
             }
         }
 
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 26/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
         private void validateUpdate_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -80,6 +89,7 @@ namespace Booking_v2
                         chambre.Climatisation = isClim;
                         chambre.NbLits = Int32.Parse(nbLitsTextBox.Text);
                         chambre.Nom = nomTextBox.Text;
+                        chambre.keyHotel = comboHotelID.SelectedIndex;
 
                         db.SaveChanges();
                     }

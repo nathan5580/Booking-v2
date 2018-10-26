@@ -1,48 +1,23 @@
-﻿using System;
+﻿using Booking_v2.Model;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Booking_v2.Classes;
-using Booking_v2.Model;
 
 namespace Booking_v2
 {
     /// <summary>
-    /// Logique d'interaction pour Chambres.xaml
+    /// Logique d'interaction pour HotelChambres.xaml
     /// </summary>
-    public partial class Chambres : Page
+    public partial class HotelChambres : Page
     {
-        public Chambres()
+        public HotelChambres(HotelsSet row)
         {
             InitializeComponent();
-
             try
             {
-                //Task task = new Task(async () => await DisplayChambres());
-                //task.Start();
-                DisplayChambres();
-
-                using (var db = new Model.Booking())
-                {
-                    List<HotelsSet> hotelIds = (from hotel in db.HotelsSet select hotel).ToList();
-
-
-                    foreach (var item in hotelIds)
-                    {
-                        comboHotelID.Items.Add(item.Id + "-" + item.Nom);
-                    }
-                }
+                DisplayChambres(row.Id);
             }
             catch (Exception ex)
             {
@@ -57,64 +32,35 @@ namespace Booking_v2
         /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
         ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
         /// =====================================================================================
-        private /*static async Task*/ void DisplayChambres()
+        private /*static async Task*/ void DisplayChambres(int? hotelId = null)
         {
-            using (var db = new Model.Booking(){ Configuration = { ProxyCreationEnabled = false } })
-            {
-                List<ChambresSet> chambreResult = (from chambre in db.ChambresSet select chambre).ToList();
-                
-                chambresSetDataGrid.ItemsSource = chambreResult;
-            }
-        }
-
-        /// <summary>
-        /// Add new record
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        /// =====================================================================================
-        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
-        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
-        /// =====================================================================================
-        private void validateChambre_Click(object sender, RoutedEventArgs e)
-        {
-            try
+            if (hotelId != null)
             {
                 using (var db = new Model.Booking() { Configuration = { ProxyCreationEnabled = false } })
                 {
-                    int id = Util.GetComboId(comboHotelID.Text);
+                    List<ChambresSet> chambreResult = (from chambre in db.ChambresSet where chambre.keyHotel == hotelId select chambre).ToList();
 
-                    bool isClim = false;
-                    if (climatisationCheckBox.IsChecked.Value)
-                    {
-                        isClim = true;
-                    }
-
-                    ChambresSet chambre = new ChambresSet();
-                    chambre.Nom = nomTextBox.Text;
-                    chambre.Climatisation = isClim;
-                    chambre.NbLits = Int32.Parse(nbLitsTextBox.Text);
-                    chambre.keyHotel = id;
-
-                    db.ChambresSet.Add(chambre);
-                    db.SaveChanges();
+                    chambresSetDataGrid.ItemsSource = chambreResult;
                 }
-
-                DisplayChambres();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                using (var db = new Model.Booking() { Configuration = { ProxyCreationEnabled = false } })
+                {
+                    List<ChambresSet> chambreResult = (from chambre in db.ChambresSet select chambre).ToList();
+
+                    chambresSetDataGrid.ItemsSource = chambreResult;
+                }
             }
         }
 
         /// <summary>
-        /// update
+        /// Update
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         /// =====================================================================================
-        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        /// Modification : Initial : 26/10/2018 |N.Wilcké (SESA474351)
         ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
         /// =====================================================================================
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -131,12 +77,12 @@ namespace Booking_v2
         }
 
         /// <summary>
-        /// delete
+        /// Delete
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         /// =====================================================================================
-        /// Modification : Initial : 25/10/2018 |N.Wilcké (SESA474351)
+        /// Modification : Initial : 26/10/2018 |N.Wilcké (SESA474351)
         ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
         /// =====================================================================================
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
