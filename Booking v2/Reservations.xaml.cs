@@ -139,5 +139,28 @@ namespace Booking_v2
                 MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 26/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ReservationSet row = (ReservationSet)reservationSetDataGrid.SelectedItems[0];
+                ((MainWindow)Window.GetWindow(this))._mainFrame.Navigate(new ReservationUpdate(row));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+        }
     }
 }

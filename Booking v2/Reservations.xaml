@@ -18,12 +18,12 @@
     <Grid>
 
         <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
-            <DataGrid x:Name="reservationSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource reservationSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398" Margin="0,0,0,3">
+            <DataGrid SelectionMode="Single" IsReadOnly="true" x:Name="reservationSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource reservationSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398" Margin="0,0,0,3">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Red" />
+                                <Setter Property="Background" Value="#FF57DC57" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -50,7 +50,7 @@
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem
-                            Header="Update" Background="{x:Null}"/>
+                            Header="Update" Background="{x:Null}" Click="MenuItem_Click_1"/>
                         <MenuItem
                             Header="Delete" Click="MenuItem_Click"/>
                     </ContextMenu>

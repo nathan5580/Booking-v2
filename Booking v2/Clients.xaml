@@ -18,12 +18,12 @@
     <Grid>
 
         <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
-            <DataGrid IsReadOnly="true" x:Name="clientsSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource clientsSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="391" Height="368">
+            <DataGrid SelectionMode="Single" IsReadOnly="true" x:Name="clientsSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource clientsSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="391" Height="368">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Red" />
+                                <Setter Property="Background" Value="#FF57DC57" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>

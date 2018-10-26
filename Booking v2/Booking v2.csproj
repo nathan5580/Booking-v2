@@ -101,6 +101,9 @@
     <Compile Include="Reservations.xaml.cs">
       <DependentUpon>Reservations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReservationUpdate.xaml.cs">
+      <DependentUpon>ReservationUpdate.xaml</DependentUpon>
+    </Compile>
     <Page Include="Chambres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,6 +148,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Reservations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReservationUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
