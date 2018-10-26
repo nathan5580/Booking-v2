@@ -11,7 +11,10 @@ namespace Booking_MVVM.Model
     [Table("HotelsSet")]
     public partial class HotelsSet
     {
-        private string nom;
+        private string _nom;
+        private int _capacite;
+        private string _localisation;
+        private string _pays;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HotelsSet()
@@ -24,22 +27,55 @@ namespace Booking_MVVM.Model
         [Required]
         public string Nom
         {
-            get { return nom; }
+            get { return _nom; }
             set
             {
-                if (Nom != value)
+                if (_nom != value)
                 {
-                    Nom = value;
+                    _nom = value;
                     RaisePropertyChanged("Nom");
                 }
             }
         }
 
-        public int Capacite { get; set; }
+        public int Capacite
+        {
+            get { return _capacite; }
+            set
+            {
+                if (_capacite != value)
+                {
+                    _capacite = value;
+                    RaisePropertyChanged("Capacite");
+                }
+            }
+        }
 
-        public string Localisation { get; set; }
+        public string Localisation
+        {
+            get { return _localisation; }
+            set
+            {
+                if (_localisation != value)
+                {
+                    _localisation = value;
+                    RaisePropertyChanged("Localisation");
+                }
+            }
+        }
 
-        public string Pays { get; set; }
+        public string Pays
+        {
+            get { return _pays; }
+            set
+            {
+                if (_pays != value)
+                {
+                    _pays = value;
+                    RaisePropertyChanged("Pays");
+                }
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChambresSet> ChambresSet { get; set; }
