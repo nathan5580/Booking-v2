@@ -11,6 +11,8 @@ namespace Booking_MVVM.Model
     [Table("HotelsSet")]
     public partial class HotelsSet
     {
+        private string nom;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HotelsSet()
         {
@@ -20,7 +22,18 @@ namespace Booking_MVVM.Model
         public int Id { get; set; }
 
         [Required]
-        public string Nom { get; set; }
+        public string Nom
+        {
+            get { return nom; }
+            set
+            {
+                if (Nom != value)
+                {
+                    Nom = value;
+                    RaisePropertyChanged("Nom");
+                }
+            }
+        }
 
         public int Capacite { get; set; }
 

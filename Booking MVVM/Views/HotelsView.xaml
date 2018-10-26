@@ -14,7 +14,15 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation = "Horizontal">
+                            <TextBox Text = "{Binding Path = Id, Mode = OneWay}" 
+                                     Width = "100" Margin = "3 5 3 5"/>
                             <TextBox Text = "{Binding Path = Nom, Mode = TwoWay}" 
+                                     Width = "100" Margin = "3 5 3 5"/>
+                            <TextBox Text = "{Binding Path = Capacite, Mode = TwoWay}" 
+                                     Width = "100" Margin = "3 5 3 5"/>
+                            <TextBox Text = "{Binding Path = Localisation, Mode = TwoWay}" 
+                                     Width = "100" Margin = "3 5 3 5"/>
+                            <TextBox Text = "{Binding Path = Pays, Mode = TwoWay}" 
                                      Width = "100" Margin = "3 5 3 5"/>
 
                         </StackPanel>

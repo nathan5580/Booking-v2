@@ -6,12 +6,12 @@
         xmlns:local = "clr-namespace:Booking_MVVM"
         xmlns:views = "clr-namespace:Booking_MVVM.Views"
         mc:Ignorable = "d"
-        Title = "MainWindow" Height = "350" Width = "525">
+        Title = "MainWindow" Height = "500" Width = "1000">
 
     <Grid>
-        
-        <DockPanel HorizontalAlignment="Left" Height="319" LastChildFill="False" VerticalAlignment="Top" Width="517">
-            <TabControl HorizontalAlignment="Left" Height="319" Style="{DynamicResource SimpleTabControl}" VerticalAlignment="Top" Background="{x:Null}" Width="519.358">
+
+        <DockPanel HorizontalAlignment="Left" Height="469" LastChildFill="False" VerticalAlignment="Top" Width="992">
+            <TabControl HorizontalAlignment="Left" Height="469" Style="{DynamicResource SimpleTabControl}" VerticalAlignment="Top" Background="{x:Null}" Width="990">
                 <TabControl.CacheMode>
                     <BitmapCache/>
                 </TabControl.CacheMode>
