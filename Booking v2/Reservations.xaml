@@ -29,8 +29,8 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="chambresSetIdColumn" Binding="{Binding ChambresSetId}" Header="Chambres Set Id" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="clientsSetIdColumn" Binding="{Binding ClientsSetId}" Header="Clients Set Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="chambresSetIdColumn" Binding="{Binding keyChambre}" Header="Chambres Set Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="clientsSetIdColumn" Binding="{Binding keyClient}" Header="Clients Set Id" Width="SizeToHeader"/>
                     <DataGridTemplateColumn x:Name="dateDebutColumn" Header="date Debut" Width="SizeToHeader">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

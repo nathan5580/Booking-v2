@@ -29,7 +29,7 @@
                 </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn x:Name="climatisationColumn" Binding="{Binding Climatisation}" Header="Climatisation" Width="SizeToHeader"/>
-                    <DataGridTextColumn x:Name="hotelsSetIdColumn" Binding="{Binding HotelsSetId}" Header="Hotels Set Id" Width="SizeToHeader"/>
+                    <DataGridTextColumn x:Name="hotelsSetIdColumn" Binding="{Binding keyHotel}" Header="Hotels Set Id" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="nbLitsColumn" Binding="{Binding NbLits}" Header="Nb Lits" Width="SizeToHeader"/>
                     <DataGridTextColumn x:Name="nomColumn" Binding="{Binding Nom}" Header="Nom" Width="SizeToHeader"/>
