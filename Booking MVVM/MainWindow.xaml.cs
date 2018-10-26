@@ -24,5 +24,23 @@ namespace Booking_MVVM
         {
             InitializeComponent();
         }
+
+        private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Booking_MVVM.ViewModel.StudentViewModel studentViewModelObject =
+                new Booking_MVVM.ViewModel.StudentViewModel();
+            studentViewModelObject.LoadStudents();
+
+            StudentViewControl.DataContext = studentViewModelObject;
+        }
+
+        private void HotelsViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Booking_MVVM.ViewModel.HotelsViewModel hotelViewModelObject =
+                new Booking_MVVM.ViewModel.HotelsViewModel();
+            hotelViewModelObject.LoadHotels();
+
+            HotelViewControl.DataContext = hotelViewModelObject;
+        }
     }
 }

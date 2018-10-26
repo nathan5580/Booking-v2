@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace Booking_MVVM.Model
 {
     using System;
@@ -28,5 +30,15 @@ namespace Booking_MVVM.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChambresSet> ChambresSet { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged(string property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
     }
 }
