@@ -107,10 +107,17 @@ namespace Booking_v2
 
                 using (var db = new Model.Booking())
                 {
-                    var hotel = new HotelsSet() { Id = row.Id };
-                    db.HotelsSet.Attach(hotel);
-                    db.HotelsSet.Remove(hotel);
-                    db.SaveChanges();
+                    if (!(from ch in db.ChambresSet where ch.keyHotel == row.Id select ch.Id).Any())
+                    {
+                        var hotel = new HotelsSet() { Id = row.Id };
+                        db.HotelsSet.Attach(hotel);
+                        db.HotelsSet.Remove(hotel);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Votre hôtel possède des chambres." + Environment.NewLine + "Supression impossible.");
+                    }
                 }
 
                 DisplayHotels();
@@ -118,6 +125,29 @@ namespace Booking_v2
             catch (Exception ex)
             {
                 MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 26/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HotelsSet row = (HotelsSet)hotelsSetDataGrid.SelectedItems[0];
+                ((MainWindow)Window.GetWindow(this))._mainFrame.Navigate(new HotelsUpdate(row));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
         }
     }

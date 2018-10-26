@@ -1,0 +1,43 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Booking_v2"
+      xmlns:Model="clr-namespace:Booking_v2.Model" x:Class="Booking_v2.HotelsUpdate"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HotelsUpdate" Width="652" Height="368">
+
+    <Page.Resources>
+        <CollectionViewSource x:Key="hotelsSetViewSource" d:DesignSource="{d:DesignInstance {x:Type Model:HotelsSet}, CreateList=True}"/>
+    </Page.Resources>
+
+    <Grid>
+        <DockPanel HorizontalAlignment="Left" Height="368" LastChildFill="False" VerticalAlignment="Top" Width="652" Background="White">
+            <Grid x:Name="grid1" VerticalAlignment="Top" DataContext="{StaticResource hotelsSetViewSource}" DockPanel.Dock="Top" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Capacite:"/>
+                <TextBox x:Name="capaciteTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Capacite, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Localisation:"/>
+                <TextBox x:Name="localisationTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Localisation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Nom:"/>
+                <TextBox x:Name="nomTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Nom, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Pays:"/>
+                <TextBox x:Name="paysTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Pays, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1" Background="{x:Null}"/>
+            </Grid>
+            <Button Name="updateHotel" Content="Update Hotel" Height="23.177" Style="{DynamicResource SimpleButton}" DockPanel.Dock="Top" Margin="222.632,0" Click="updateHotel_Click"/>
+        </DockPanel>
+
+    </Grid>
+</Page>

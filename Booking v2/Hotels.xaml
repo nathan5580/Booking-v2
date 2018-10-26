@@ -34,7 +34,7 @@
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem
-                            Header="Update" Background="{x:Null}"/>
+                            Header="Update" Background="{x:Null}" Click="MenuItem_Click_1"/>
                         <MenuItem
                             Header="Delete" Click="MenuItem_Click"/>
                     </ContextMenu>

@@ -66,7 +66,9 @@ namespace Booking_v2
                     ChambresSet hereChambre = new ChambresSet();
                     hereChambre = this.chambre;
 
-                    ChambresSet chambre = db.ChambresSet.SingleOrDefault(c => c.Id == hereChambre.Id);
+                    ChambresSet chambre = new ChambresSet() { Id = hereChambre.Id };
+                    db.ChambresSet.Attach(chambre);
+
                     if (chambre != null)
                     {
                         bool isClim = false;
@@ -78,6 +80,7 @@ namespace Booking_v2
                         chambre.Climatisation = isClim;
                         chambre.NbLits = Int32.Parse(nbLitsTextBox.Text);
                         chambre.Nom = nomTextBox.Text;
+
                         db.SaveChanges();
                     }
                 }

@@ -30,7 +30,8 @@ namespace Booking_v2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
         }
 
@@ -78,7 +79,8 @@ namespace Booking_v2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
         }
 
@@ -95,11 +97,11 @@ namespace Booking_v2
         {
             try
             {
-                ClientsSet row = (ClientsSet)clientsSetDataGrid.SelectedItems[0];
+                ClientsSet row = (ClientsSet) clientsSetDataGrid.SelectedItems[0];
 
                 using (var db = new Model.Booking())
                 {
-                    var client = new ClientsSet() { Id = row.Id };
+                    var client = new ClientsSet() {Id = row.Id};
                     db.ClientsSet.Attach(client);
                     db.ClientsSet.Remove(client);
                     db.SaveChanges();
@@ -109,7 +111,31 @@ namespace Booking_v2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+        }
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 26/10/2018 |N.Wilcké (SESA474351)
+        ///                          XX/XX/XXXX | X.XXX (SESAXXXXX)      
+        /// =====================================================================================
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ClientsSet row = (ClientsSet) clientsSetDataGrid.SelectedItems[0];
+                ((MainWindow) Window.GetWindow(this))._mainFrame.Navigate(new ClientsUpdate(row));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Internal error :" + Environment.NewLine + ex, "Alert", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
         }
     }
