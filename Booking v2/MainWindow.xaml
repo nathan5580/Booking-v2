@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Booking_v2"
+        xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="Booking C-V2" Height="440" Width="800" MaxHeight="440" MaxWidth="800" MinHeight="440" MinWidth="800">
     <Grid>
@@ -11,6 +12,18 @@
             <TabItem Header="Accueil" Style="{DynamicResource SimpleTabItem}" Background="White">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Booking.cesi V2" Height="63.064" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Center" Width="374.109" FontFamily="Microsoft JhengHei UI" FontSize="48" HorizontalAlignment="Center"/>
+
+                    <wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Bottom">
+                        <wpf:CartesianChart.AxisX>
+                            <wpf:Axis Title="Salesman" LabelFormatter="{Binding Formatter}"></wpf:Axis>
+                        </wpf:CartesianChart.AxisX>
+                        <wpf:CartesianChart.AxisY>
+                            <wpf:Axis Title="Sold Apps" Labels="{Binding Labels}"></wpf:Axis>
+                        </wpf:CartesianChart.AxisY>
+                        <wpf:CartesianChart.DataTooltip>
+                            <wpf:DefaultTooltip SelectionMode="SharedYValues"></wpf:DefaultTooltip>
+                        </wpf:CartesianChart.DataTooltip>
+                    </wpf:CartesianChart>
                 </Grid>
             </TabItem>
             <TabItem Header="Application" Style="{DynamicResource SimpleTabItem}">

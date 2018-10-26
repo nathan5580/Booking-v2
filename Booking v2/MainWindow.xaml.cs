@@ -25,7 +25,42 @@ namespace Booking_v2
         public MainWindow()
         {
             InitializeComponent();
+
+            // Chart
+            try
+            {
+                SeriesCollection = new SeriesCollection();
+
+                //adding series will update and animate the chart automatically
+                using (var db = new Model.Booking())
+                {
+                    SeriesCollection.Add(new RowSeries
+                    {
+                        Title = "Today",
+                        Values = new ChartValues<double>
+                        {
+                            (from h in db.HotelsSet select h.Id).Count(), (from c in db.ClientsSet select c.Id).Count(),
+                            (from c in db.ChambresSet select c.Id).Count(),
+                            (from r in db.ReservationSet select r.Id).Count()
+                        }
+                    });
+                }
+
+
+                Labels = new[] {"Hotels", "Clients", "Chambres", "Reservations"};
+                Formatter = value => value.ToString("N");
+
+                DataContext = this;
+            }
+            catch
+            {
+                Console.Write("Internal error");
+            }
         }
+
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
 
         private void hotelButton_Click(object sender, RoutedEventArgs e)
         {
