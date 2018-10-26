@@ -17,7 +17,7 @@
     <Grid>
 
         <DockPanel Width="652" VerticalAlignment="Top" LastChildFill="False" Height="368" HorizontalAlignment="Left" DataContext="{StaticResource hotelsSetViewSource}" Background="White">
-            <DataGrid x:Name="chambresSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource chambresSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398">
+            <DataGrid IsReadOnly="true" x:Name="chambresSetDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource chambresSetViewSource}}" RowDetailsVisibilityMode="VisibleWhenSelected" Background="{x:Null}" Width="398">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
                         <Style.Triggers>

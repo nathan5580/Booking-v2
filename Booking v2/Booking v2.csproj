@@ -76,6 +76,9 @@
     <Compile Include="Chambres.xaml.cs">
       <DependentUpon>Chambres.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChambreUpdate.xaml.cs">
+      <DependentUpon>ChambreUpdate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Util.cs" />
     <Compile Include="Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
@@ -90,6 +93,10 @@
       <DependentUpon>Reservations.xaml</DependentUpon>
     </Compile>
     <Page Include="Chambres.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChambreUpdate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

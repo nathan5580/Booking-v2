@@ -11,16 +11,20 @@ namespace Booking_v2.Model
     {
         public int Id { get; set; }
 
+        [Required]
         public DateTime dateDebut { get; set; }
 
+        [Required]
         public DateTime dateFin { get; set; }
 
-        public int ClientsSetId { get; set; }
+        //foreign key
+        public int keyClient { get; set; }
 
-        public int ChambresSetId { get; set; }
+        public ClientsSet Client { get; set; }
 
-        public virtual ChambresSet ChambresSet { get; set; }
+        //foreign key
+        public int keyChambre { get; set; }
 
-        public virtual ClientsSet ClientsSet { get; set; }
+        public ChambresSet Chambres { get; set; }
     }
 }

@@ -94,7 +94,7 @@ namespace Booking_v2
                     chambre.Nom = nomTextBox.Text;
                     chambre.Climatisation = isClim;
                     chambre.NbLits = Int32.Parse(nbLitsTextBox.Text);
-                    chambre.HotelsSetId = id;
+                    chambre.keyHotel = id;
 
                     db.ChambresSet.Add(chambre);
                     db.SaveChanges();
@@ -121,21 +121,9 @@ namespace Booking_v2
         {
             try
             {
+
                 ChambresSet row = (ChambresSet)chambresSetDataGrid.SelectedItems[0];
-
-                using (var db = new Model.Booking())
-                {
-                    ChambresSet chambre = db.ChambresSet.SingleOrDefault(c => c.Id == row.Id);
-                    if (chambre != null)
-                    {
-                        chambre.Climatisation = row.Climatisation;
-                        chambre.NbLits = row.NbLits;
-                        chambre.Nom = row.Nom;
-                        db.SaveChanges();
-                    }
-                }
-
-                DisplayChambres();
+                ((MainWindow)Window.GetWindow(this))._mainFrame.Navigate(new ChambreUpdate(row));
             }
             catch (Exception ex)
             {

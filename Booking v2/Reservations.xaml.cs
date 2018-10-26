@@ -92,8 +92,8 @@ namespace Booking_v2
                 using (var db = new Model.Booking())
                 {
                     ReservationSet reserv = new ReservationSet();
-                    reserv.ChambresSetId = idChambre;
-                    reserv.ClientsSetId = idClient;
+                    reserv.keyChambre = idChambre;
+                    reserv.keyClient = idClient;
                     reserv.dateDebut = dateDebutDatePicker.DisplayDate.Date;
                     reserv.dateFin = dateFinDatePicker.DisplayDate.Date;
 

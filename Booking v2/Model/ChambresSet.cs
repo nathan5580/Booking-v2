@@ -9,12 +9,6 @@ namespace Booking_v2.Model
     [Table("ChambresSet")]
     public partial class ChambresSet
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ChambresSet()
-        {
-            ReservationSet = new HashSet<ReservationSet>();
-        }
-
         public int Id { get; set; }
 
         [Required]
@@ -24,11 +18,11 @@ namespace Booking_v2.Model
 
         public int NbLits { get; set; }
 
-        public int HotelsSetId { get; set; }
+        //Foreign key
+        public int keyHotel { get; set; }
 
-        public virtual HotelsSet HotelsSet { get; set; }
+        public HotelsSet Hotel { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReservationSet> ReservationSet { get; set; }
+        public virtual ICollection<ReservationSet> ReservationsSet { get; set; }
     }
 }
