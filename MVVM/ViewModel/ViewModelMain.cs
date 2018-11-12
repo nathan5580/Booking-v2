@@ -19,6 +19,7 @@ namespace MvvmExample.ViewModel
             };
             TextProperty1 = "User";
 
+            // Addings command to ralayCommand
             AddUserCommand = new RelayCommand(AddUser);
             DeleteUserCommand = new RelayCommand(DeleteUser);
         }
@@ -57,9 +58,25 @@ namespace MvvmExample.ViewModel
             }
         }
 
-        #region AddUserCommand
+        #region AddUserCommand        
+        /// <summary>
+        /// Gets or sets the add user command.
+        /// </summary>
+        /// <value>
+        /// The add user command.
+        /// </value>
+        /// =====================================================================================
+        /// Modification : Initial : 12/11/2018 |N.Wilcké (SESA474351)  
+        /// =====================================================================================
         public RelayCommand AddUserCommand { get; set; }
 
+        /// <summary>
+        /// Adds the user.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 12/11/2018 |N.Wilcké (SESA474351)   
+        /// =====================================================================================
         void AddUser(object parameter)
         {
             if (parameter == null) return;
@@ -67,9 +84,25 @@ namespace MvvmExample.ViewModel
         }
         #endregion
 
-        #region DeleteUserCommand
+        #region DeleteUserCommand        
+        /// <summary>
+        /// Gets or sets the delete user command.
+        /// </summary>
+        /// <value>
+        /// The delete user command.
+        /// </value>
+        /// =====================================================================================
+        /// Modification : Initial : 12/11/2018 |N.Wilcké (SESA474351)  
+        /// =====================================================================================
         public RelayCommand DeleteUserCommand { get; set; }
 
+        /// <summary>
+        /// Deletes the user.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// =====================================================================================
+        /// Modification : Initial : 12/11/2018 |N.Wilcké (SESA474351)
+        /// =====================================================================================
         void DeleteUser(object parameter)
         {
             if (_SelectedPerson != null)
