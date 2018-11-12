@@ -6,10 +6,6 @@ using System.Windows.Input;
 
 namespace MvvmExample.Helpers
 {
-    /// <summary>
-    /// Taken from http://msdn.microsoft.com/en-us/magazine/dd419663.aspx#id0090030
-    /// </summary>
-
     public class RelayCommand : ICommand
     {
         #region Fields
@@ -34,7 +30,7 @@ namespace MvvmExample.Helpers
             _execute = execute;
             _canExecute = canExecute;
         }
-        #endregion // Constructors
+        #endregion
 
         #region ICommand Members
 
@@ -54,7 +50,7 @@ namespace MvvmExample.Helpers
             _execute(parameter);
         }
 
-        #endregion // ICommand Members
+        #endregion
     }
 
 }

@@ -1,10 +1,12 @@
 ﻿namespace MvvmExample.Model
 {
-    /// <summary>
-    /// A POCO class is one that does not need any special interfaces or inheritance
-    /// In WPF MVVM terms, a POCO class is one that does not Fire PropertyChanged events
-    /// </summary>
 
+    /// <summary>
+    /// Poco class don't fire propertyChanged Event
+    /// </summary>
+    /// =====================================================================================
+    /// Modification : Initial : 12/11/2018 |N.Wilcké (SESA474351)
+    /// =====================================================================================
     class PocoPerson
     {
         public string FirstName { get; set; }
