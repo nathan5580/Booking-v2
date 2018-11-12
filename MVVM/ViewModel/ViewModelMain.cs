@@ -53,7 +53,7 @@ namespace MvvmExample.ViewModel
                 new Person { FirstName="Adrien", LastName="Marini", Age=31 },
                 new Person { FirstName="Steve", LastName="Bigleur", Age=60 },
             };
-            TextProperty1 = "Ecrivez un message";
+            TextProperty1 = "User";
 
             AddUserCommand = new RelayCommand(AddUser);
         }

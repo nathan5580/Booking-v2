@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:MvvmExample.ViewModel" 
         x:Class="MvvmExample.ViewModel.MainWindow" WindowStartupLocation="CenterScreen"
-        Title="MVVM" Height="400" Width="400" Background="GhostWhite" 
+        Title="MVVM" Height="600" Width="400" Background="GhostWhite" 
         DataContext="{DynamicResource ViewModelMain}">
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
@@ -13,7 +13,7 @@
     		<RowDefinition Height="0.939*"/>
     		<RowDefinition Height="Auto"/>
     	</Grid.RowDefinitions>
-        <GroupBox Header="MVVM CESI" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="MVVM CESI" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,70,22,70" Width="314">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -24,8 +24,9 @@
                     	<StackPanel Orientation="Horizontal">
                     		<ListBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" DisplayMemberPath="FirstName" HorizontalAlignment="Left"/>
                     		<DataGrid ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="5,0,0,0"/>
-	                        <ComboBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" DisplayMemberPath="FirstName" Margin="5,0,0,5" VerticalAlignment="Top"/>
-                    	</StackPanel>
+                            <ComboBox ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" DisplayMemberPath="FirstName" Margin="5,0,0,5" VerticalAlignment="Top"/>
+                        </StackPanel>
+                        <Button Content="Supprimer" Command="{Binding DeleteUserCommand}"></Button>
                         <TextBox x:Name="tb1" Text="{Binding TextProperty1, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
                         <TextBlock FontWeight="Bold" Margin="5" Text="TextBox texte : "><Run Text="{Binding TextProperty1}"/><Run Text="'"/></TextBlock>
                     </StackPanel>
