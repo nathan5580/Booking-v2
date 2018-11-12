@@ -60,7 +60,6 @@
     <Compile Include="Helpers\DialogCloser.cs" />
     <Compile Include="Helpers\IClosableViewModel.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="Model\PersonelBusinessObject.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\PocoPerson.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
