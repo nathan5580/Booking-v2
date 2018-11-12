@@ -7,28 +7,46 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking v2", "Booking v2\Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking MVVM", "Booking MVVM\Booking MVVM.csproj", "{714F781F-0F2D-405D-8822-C8CC2FCA9E81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmExample", "MVVM\MvvmExample.csproj", "{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{171CE997-4D08-42F3-943E-18E9E970AE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{171CE997-4D08-42F3-943E-18E9E970AE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{171CE997-4D08-42F3-943E-18E9E970AE59}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{171CE997-4D08-42F3-943E-18E9E970AE59}.Debug|x86.Build.0 = Debug|Any CPU
 		{171CE997-4D08-42F3-943E-18E9E970AE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{171CE997-4D08-42F3-943E-18E9E970AE59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{171CE997-4D08-42F3-943E-18E9E970AE59}.Release|x86.ActiveCfg = Release|Any CPU
+		{171CE997-4D08-42F3-943E-18E9E970AE59}.Release|x86.Build.0 = Release|Any CPU
 		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Debug|x86.Build.0 = Debug|Any CPU
 		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Release|x86.ActiveCfg = Release|Any CPU
+		{714F781F-0F2D-405D-8822-C8CC2FCA9E81}.Release|x86.Build.0 = Release|Any CPU
+		{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}.Debug|x86.ActiveCfg = Debug|x86
+		{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}.Debug|x86.Build.0 = Debug|x86
+		{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}.Release|Any CPU.ActiveCfg = Release|x86
+		{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}.Release|x86.ActiveCfg = Release|x86
+		{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76542D23-5047-4BBE-B62E-F25DD4D1C086}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
