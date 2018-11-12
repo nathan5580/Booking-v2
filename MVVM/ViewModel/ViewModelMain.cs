@@ -9,6 +9,20 @@ namespace MvvmExample.ViewModel
     {
         public ObservableCollection<Person> People { get; set; }
 
+        public ViewModelMain()
+        {
+            People = new ObservableCollection<Person>
+            {
+                new Person { FirstName="Nathan", LastName="WILCKE", Age=21 },
+                new Person { FirstName="Adrien", LastName="Marini", Age=31 },
+                new Person { FirstName="Steve", LastName="Bigleur", Age=60 },
+            };
+            TextProperty1 = "User";
+
+            AddUserCommand = new RelayCommand(AddUser);
+            DeleteUserCommand = new RelayCommand(DeleteUser);
+        }
+
         object _SelectedPerson;
         public object SelectedPerson
         {
@@ -43,26 +57,30 @@ namespace MvvmExample.ViewModel
             }
         }
 
+        #region AddUserCommand
         public RelayCommand AddUserCommand { get; set; }
-
-        public ViewModelMain()
-        {
-            People = new ObservableCollection<Person>
-            {
-                new Person { FirstName="Nathan", LastName="WILCKE", Age=21 },
-                new Person { FirstName="Adrien", LastName="Marini", Age=31 },
-                new Person { FirstName="Steve", LastName="Bigleur", Age=60 },
-            };
-            TextProperty1 = "User";
-
-            AddUserCommand = new RelayCommand(AddUser);
-        }
 
         void AddUser(object parameter)
         {
             if (parameter == null) return;
             People.Add(new Person { FirstName = parameter.ToString(), LastName = parameter.ToString(), Age = DateTime.Now.Second });
         }
+        #endregion
+
+        #region DeleteUserCommand
+        public RelayCommand DeleteUserCommand { get; set; }
+
+        void DeleteUser(object parameter)
+        {
+            if (_SelectedPerson != null)
+            {
+                if (_SelectedPerson.GetType() == typeof(Person))
+                {
+                    People.Remove((Person)_SelectedPerson);
+                }
+            }
+        }
+        #endregion
 
     }
 }
