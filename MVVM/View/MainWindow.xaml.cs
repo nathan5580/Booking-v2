@@ -9,12 +9,5 @@ namespace MvvmExample.ViewModel
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var win = new Window1 { DataContext = new ViewModelWindow1(tb1.Text) };
-            win.Show();
-            this.Close();
-        }
     }
 }

@@ -68,9 +68,9 @@ namespace MvvmExample.ViewModel
         {
             People = new ObservableCollection<Person>
             {
-                new Person { FirstName="Tom", LastName="Jones", Age=80 },
-                new Person { FirstName="Dick", LastName="Tracey", Age=40 },
-                new Person { FirstName="Harry", LastName="Hill", Age=60 },
+                new Person { FirstName="Nathan", LastName="WILCKE", Age=21 },
+                new Person { FirstName="Adrien", LastName="Marini", Age=31 },
+                new Person { FirstName="Steve", LastName="Bigleur", Age=60 },
             };
             TextProperty1 = "Type here";
 
