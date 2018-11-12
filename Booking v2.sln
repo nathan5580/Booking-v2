@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking v2", "Booking v2\Booking v2.csproj", "{171CE997-4D08-42F3-943E-18E9E970AE59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Not_MVVM", "Booking v2\Not_MVVM.csproj", "{171CE997-4D08-42F3-943E-18E9E970AE59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking MVVM", "Booking MVVM\Booking MVVM.csproj", "{714F781F-0F2D-405D-8822-C8CC2FCA9E81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bad_MVVM", "Booking MVVM\Bad_MVVM.csproj", "{714F781F-0F2D-405D-8822-C8CC2FCA9E81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmExample", "MVVM\MvvmExample.csproj", "{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Good_MVVM", "MVVM\Good_MVVM.csproj", "{845FA2B6-500A-4757-A398-D0E7FDBEE2B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
